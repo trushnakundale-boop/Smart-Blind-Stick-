@@ -28,11 +28,13 @@ This creates serious safety risks for visually impaired users.
 The Smart Blind Stick solves these issues using:
 
 📡 HC-SR04 ultrasonic sensor for obstacle detection
+
 🔊 Buzzer + vibration motor for alerts
 📍 NEO-6M GPS module for live tracking
 🖥️ Python software for geofence monitoring
 🌍 Google Maps location sharing
 ⚙️ Features
+
 🧠 Smart Obstacle Detection
 Detects obstacles within 100 cm
 Real-time distance monitoring
@@ -46,9 +48,11 @@ Distance	Alert Type
 30–60 cm	Medium beep
 10–30 cm	Fast beep
 <10 cm	Continuous beep
+
 📳 Vibration Feedback
 Provides haptic feedback
 Improves accessibility in noisy environments
+
 📍 GPS Tracking
 Real-time user location tracking
 Accurate coordinate monitoring
@@ -179,8 +183,11 @@ Emergency-style UI
 👴 Elderly safety monitoring
 🧭 Indoor & outdoor navigation
 🤖 Assistive robotics
+
 🧑‍💻 Author
+
 👨‍💻 Developed By
+
 Trushna Dinesh Kundale
 
 ⭐ Support
