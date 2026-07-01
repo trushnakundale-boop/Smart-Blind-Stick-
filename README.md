@@ -13,7 +13,7 @@ Unlike traditional white canes, this smart stick can:
 ✅ Send Google Maps location link
 This project combines Arduino, Ultrasonic Sensors, GPS Tracking, and Python Software to create a low-cost smart navigation system.
 
-🚨 Problem Statement
+<h2>🚨 Problem Statement</h2>
 Traditional blind sticks only detect ground-level obstacles and provide limited assistance.
 
 They cannot:
@@ -24,7 +24,7 @@ They cannot:
 ❌ Alert caretakers when user leaves a safe zone
 This creates serious safety risks for visually impaired users.
 
-💡 Proposed Solution
+<h2>💡 Proposed Solution</h2>
 The Smart Blind Stick solves these issues using:
 
 📡 HC-SR04 ultrasonic sensor for obstacle detection
@@ -184,11 +184,9 @@ Emergency-style UI
 🧭 Indoor & outdoor navigation
 🤖 Assistive robotics
 
-🧑‍💻 Author
-
 👨‍💻 Developed By
 
-Trushna Dinesh Kundale
+𝚃𝚛𝚞𝚜𝚑𝚗𝚊 𝙳𝚒𝚗𝚎𝚜𝚑 𝙺𝚞𝚗𝚍𝚊𝚕𝚎
 
 ⭐ Support
 If you like this project:
