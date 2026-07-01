@@ -1,0 +1,76 @@
+#include <SoftwareSerial.h>
+
+SoftwareSerial gpsSerial(4, 3);
+
+const int TRIG = 9;
+const int ECHO = 10;
+const int BUZZER = 8;
+const int MOTOR = 7;
+
+void setup() {
+  Serial.begin(115200);
+  gpsSerial.begin(9600);
+  pinMode(TRIG, OUTPUT);
+  pinMode(ECHO, INPUT);
+  pinMode(BUZZER, OUTPUT);
+  pinMode(MOTOR, OUTPUT);
+}
+
+float getDistance() {
+  digitalWrite(TRIG, LOW);
+  delayMicroseconds(2);
+  digitalWrite(TRIG, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(TRIG, LOW);
+  long duration = pulseIn(ECHO, HIGH, 15000); // 15000 = sirf 100cm tak
+  if (duration == 0) return 400;
+  float dist = (duration * 0.034) / 2;
+  if (dist <= 2 || dist > 100) return 400; // 100cm se zyada = ignore
+  return dist;
+}
+
+void alert(int onTime, int offTime) {
+  digitalWrite(BUZZER, HIGH);
+  digitalWrite(MOTOR, HIGH);
+  delay(onTime);
+  digitalWrite(BUZZER, LOW);
+  digitalWrite(MOTOR, LOW);
+  delay(offTime);
+}
+
+void loop() {
+  float distance = getDistance();
+
+  Serial.print("DIST:");
+  Serial.println(distance);
+
+  if (distance == 400) {
+    // Kuch nahi 100cm ke andar — SAFE
+    digitalWrite(BUZZER, LOW);
+    digitalWrite(MOTOR, LOW);
+    delay(200);
+  }
+  else if (distance > 60) {
+    // FAR — slow beep
+    alert(100, 900);
+  }
+  else if (distance > 30) {
+    // NEAR — medium beep
+    alert(100, 300);
+  }
+  else if (distance > 10) {
+    // DANGER — fast beep
+    alert(100, 100);
+  }
+  else {
+    // CRITICAL — continuous
+    digitalWrite(BUZZER, HIGH);
+    digitalWrite(MOTOR, HIGH);
+    delay(200);
+  }
+
+  while (gpsSerial.available()) {
+    char c = gpsSerial.read();
+    Serial.print(c);
+  }
+}
